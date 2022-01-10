@@ -120,3 +120,7 @@ json.Unmarshal([]byte(j), p)
 fmt.Println("name is %s", p.Name.ValueOrDefault("Unknown"))
 // prints "name is Unknown" since `name` was null
 ```
+
+# License
+
+Released under the MIT License
