@@ -27,13 +27,13 @@ import (
 
 ```go
 // Optional string
-optString := optional.Of("foo")
+optStr := optional.Of("foo")
 
 // Optional int
 optInt := optional.Of(5)
 
 // Optional float64
-optFloat := optional.Of(9.99)
+optFlt := optional.Of(9.99)
 
 // Optional struct
 type Thing struct {
@@ -47,28 +47,37 @@ optThing := optional.Of(Thing{42, "baz"})
 
 ```go
 // Optional string with nil value
-nilString := optional.OfNil[string]()
+nilStr := optional.OfNil[string]()
 
 // Optional int with nil value
 nilInt := optional.OfNil[int]()
 
 // Nil struct
-nilThing := optional.OfNil[Thing]()
+nilThg := optional.OfNil[Thing]()
+```
 
-// Alternative initialization
-nilStringAlt := optional.Value[string]{}
+## Alternative initialization with nil values
+
+```go
+// Optional int with nil value
+var nilInt optional.Value[int]
+
+// Optional string with nil value
+nilStr := optional.Value[string]{}
 ```
 
 ## Updating optional values
 
 ```go
-o := optional.Of(42)
+o := optional.OfNil[int]
+
+// Set new value
+o.Set(42)
 
 // Clearing value and resetting to nil
 o.SetNil()
 
-// Updating value
-o.Set(5) // ok
+// Set invalid value
 o.Set("fred") // compiler error; type is Optional.Value[int]
 ```
 
@@ -77,18 +86,25 @@ o.Set("fred") // compiler error; type is Optional.Value[int]
 ```go
 o := optional.Of(42)
 
-// Get value with default fallback
-fmt.Println(o.ValueOrDefault(99)) // prints 42
-
-// Getting underlying optional value
+// Safely get underlying optional value
 if ok, val := o.Value(); ok {
     fmt.Println(val) // prints 42
 }
 
-// Must getter
+// Unsafely get value
 fmt.Println(o.MustValue()) // prints 42
 o.SetNil()
 fmt.Println(o.MustValue()) // panics
+```
+
+## Get value with default
+```go
+o := optional.Of("foo")
+
+fmt.Println(o.ValueOrDefault("fred")) // prints "foo"
+
+o.SetNil()
+fmt.Println(o.ValueOrDefault("fred")) // prints "fred"
 ```
 
 ## Checking for value
@@ -97,8 +113,6 @@ fmt.Println(o.MustValue()) // panics
 if o.HasValue() {
     fmt.Println("has value")
 }
-
-// Alternatively
 
 if o.IsNil() {
     fmt.Println("value is nil")
