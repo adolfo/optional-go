@@ -42,8 +42,8 @@ func (o *Value[T]) ValueOrDefault(value T) T {
 	return *o.value
 }
 
-// MustValue returns the underlying value or PANICS if value is nil
-func (o *Value[T]) MustValue() (value T) {
+// MustGet returns the underlying value or PANICS if value is nil
+func (o *Value[T]) MustGet() (value T) {
 	return *o.value
 }
 

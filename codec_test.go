@@ -82,25 +82,25 @@ func TestScannerIntegers(t *testing.T) {
 	var oi Value[int]
 	if assert.NoError(t, oi.Scan(i64)) {
 		assert.NotNil(t, oi.value)
-		assert.Equal(t, int(i64), oi.MustValue())
+		assert.Equal(t, int(i64), oi.MustGet())
 	}
 
 	var oi8 Value[int8]
 	if assert.NoError(t, oi8.Scan(i64)) {
 		assert.NotNil(t, oi8.value)
-		assert.Equal(t, int8(i64), oi8.MustValue())
+		assert.Equal(t, int8(i64), oi8.MustGet())
 	}
 
 	var oi16 Value[int16]
 	if assert.NoError(t, oi16.Scan(i64)) {
 		assert.NotNil(t, oi16.value)
-		assert.Equal(t, int16(i64), oi16.MustValue())
+		assert.Equal(t, int16(i64), oi16.MustGet())
 	}
 
 	var oi32 Value[int32]
 	if assert.NoError(t, oi32.Scan(i64)) {
 		assert.NotNil(t, oi32.value)
-		assert.Equal(t, int32(i64), oi32.MustValue())
+		assert.Equal(t, int32(i64), oi32.MustGet())
 	}
 }
 
@@ -110,13 +110,13 @@ func TestScannerFloats(t *testing.T) {
 	var of32 Value[float32]
 	if assert.NoError(t, of32.Scan(f64)) {
 		assert.NotNil(t, of32.value)
-		assert.Equal(t, float32(f64), of32.MustValue())
+		assert.Equal(t, float32(f64), of32.MustGet())
 	}
 
 	var of64 Value[float64]
 	if assert.NoError(t, of64.Scan(f64)) {
 		assert.NotNil(t, of64.value)
-		assert.Equal(t, f64, of64.MustValue())
+		assert.Equal(t, f64, of64.MustGet())
 	}
 }
 
@@ -135,7 +135,7 @@ func TestScannerStrings(t *testing.T) {
 	var os = new(Value[string])
 	if assert.NoError(t, os.Scan("foo")) {
 		assert.NotNil(t, os.value)
-		assert.Equal(t, "foo", os.MustValue())
+		assert.Equal(t, "foo", os.MustGet())
 	}
 }
 
@@ -144,13 +144,13 @@ func TestScannerTime(t *testing.T) {
 	tm := time.Now()
 	if assert.NoError(t, otm.Scan(tm)) {
 		assert.NotNil(t, otm.value)
-		assert.Equal(t, tm, otm.MustValue())
+		assert.Equal(t, tm, otm.MustGet())
 	}
 
 	var ob Value[[]byte]
 	if assert.NoError(t, ob.Scan([]byte("foo"))) {
 		assert.NotNil(t, ob.value)
-		assert.Equal(t, []byte("foo"), ob.MustValue())
+		assert.Equal(t, []byte("foo"), ob.MustGet())
 	}
 
 	var ons Value[string]
@@ -163,7 +163,7 @@ func TestScannerBytes(t *testing.T) {
 	var ob Value[[]byte]
 	if assert.NoError(t, ob.Scan([]byte("foo"))) {
 		assert.NotNil(t, ob.value)
-		assert.Equal(t, []byte("foo"), ob.MustValue())
+		assert.Equal(t, []byte("foo"), ob.MustGet())
 	}
 }
 
