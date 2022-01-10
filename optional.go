@@ -25,8 +25,8 @@ func (o *Value[T]) SetNil() {
 	o.value = nil
 }
 
-// Value returns true if optional value is non-nil, along with the underlying value
-func (o *Value[T]) Value() (ok bool, value T) {
+// Get returns true if optional value is non-nil, along with the underlying value
+func (o *Value[T]) Get() (ok bool, value T) {
 	if o.value != nil {
 		return true, *o.value
 	}
