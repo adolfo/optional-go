@@ -28,6 +28,10 @@ func (o *Value[T]) Value() (ok bool, value T) {
 	return false, *zeroValue
 }
 
+func (o *Value[T]) IsNil() bool {
+	return o.value == nil
+}
+
 func (o *Value[T]) HasValue() bool {
 	return o.value != nil
 }
