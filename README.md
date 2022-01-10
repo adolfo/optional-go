@@ -3,6 +3,8 @@
 </p>
 
 # Optional Go
+![Tests](https://github.com/adolfo/optional-go/actions/workflows/test.yaml/badge.svg)
+[![License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 Library for conveniently and safely dealing with optional (nullable) values.
 
