@@ -36,12 +36,12 @@ func TestGetters(t *testing.T) {
 
 	assert.True(t, o.HasValue())
 
-	ok, v := o.Value()
+	ok, v := o.Get()
 	assert.True(t, ok)
 	assert.Equal(t, "foo", v)
 
 	o.SetNil()
-	ok, v = o.Value()
+	ok, v = o.Get()
 	assert.False(t, ok)
 	assert.Equal(t, "", v)
 }
@@ -83,7 +83,7 @@ func TestPanicsAsExpected(t *testing.T) {
 		assert.Equal(t, "foo", *o.value)
 	}
 
-	ok, v := o.Value()
+	ok, v := o.Get()
 	assert.Equal(t, true, ok)
 	assert.Equal(t, "foo", v)
 

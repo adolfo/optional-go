@@ -89,7 +89,7 @@ o.Set("fred") // compiler error; type is Optional.Value[int]
 o := optional.Of(42)
 
 // Safely get underlying optional value
-if ok, val := o.Value(); ok {
+if ok, val := o.Get(); ok {
     fmt.Println(val) // prints 42
 }
 
