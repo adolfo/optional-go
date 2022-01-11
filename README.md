@@ -103,10 +103,10 @@ fmt.Println(o.MustGet()) // panics
 ```go
 o := optional.Of("foo")
 
-fmt.Println(o.ValueOrDefault("fred")) // prints "foo"
+fmt.Println(o.GetOr("fred")) // prints "foo"
 
 o.SetNil()
-fmt.Println(o.ValueOrDefault("fred")) // prints "fred"
+fmt.Println(o.GetOr("fred")) // prints "fred"
 ```
 
 ## Checking for value
@@ -133,7 +133,7 @@ j := `{ "name": null, "age": 42 }`
 p := new(Person)
 json.Unmarshal([]byte(j), p)
 
-fmt.Println("name is %s", p.Name.ValueOrDefault("Unknown"))
+fmt.Println("name is %s", p.Name.GetOr("Unknown"))
 // prints "name is Unknown" since `name` was null
 ```
 
