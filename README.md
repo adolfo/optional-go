@@ -94,9 +94,9 @@ if ok, val := o.Get(); ok {
 }
 
 // Unsafely get value
-fmt.Println(o.MustValue()) // prints 42
+fmt.Println(o.MustGet()) // prints 42
 o.SetNil()
-fmt.Println(o.MustValue()) // panics
+fmt.Println(o.MustGet()) // panics
 ```
 
 ## Get value with default

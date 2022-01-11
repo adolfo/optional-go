@@ -88,13 +88,13 @@ func TestPanicsAsExpected(t *testing.T) {
 	assert.Equal(t, "foo", v)
 
 	assert.NotPanics(t, func() {
-		assert.Equal(t, "foo", o.MustValue())
+		assert.Equal(t, "foo", o.MustGet())
 	})
 
 	o.SetNil()
 	assert.Nil(t, o.value)
 
 	assert.Panics(t, func() {
-		o.MustValue()
+		o.MustGet()
 	})
 }
