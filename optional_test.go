@@ -48,10 +48,10 @@ func TestGetters(t *testing.T) {
 
 func TestGetterOfDefaultValue(t *testing.T) {
 	o := OfNil[string]()
-	assert.Equal(t, "bar", o.ValueOrDefault("bar"))
+	assert.Equal(t, "bar", o.GetOr("bar"))
 
 	o.Set("foo")
-	assert.Equal(t, "foo", o.ValueOrDefault("bar"))
+	assert.Equal(t, "foo", o.GetOr("bar"))
 }
 
 func TestTypeParameters(t *testing.T) {

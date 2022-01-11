@@ -34,8 +34,8 @@ func (o *Value[T]) Get() (ok bool, value T) {
 	return false, *zeroValue
 }
 
-// ValueOrDefault returns the underlying non-nil value or the provided fallback value
-func (o *Value[T]) ValueOrDefault(value T) T {
+// GetOr returns the underlying non-nil value or the provided fallback value
+func (o *Value[T]) GetOr(value T) T {
 	if o.value == nil {
 		return value
 	}
