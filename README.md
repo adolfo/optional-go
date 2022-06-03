@@ -8,7 +8,7 @@
 
 Library for conveniently and safely dealing with optional (nullable) values.
 
-<mark>Note</mark>: Requires Go 1.18beta1 with generics support.
+<mark>Note</mark>: Requires Go 1.18 with generics support.
 
 # Installation
 ```bash
