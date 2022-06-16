@@ -181,6 +181,24 @@ func TestScannerOverflows(t *testing.T) {
 	assert.Error(t, ou8.Scan(int64(-1)))
 }
 
+func TestMarshalingStruct(t *testing.T) {
+	x := struct {
+		Bar Value[string]
+		Baz Value[int]
+	}{
+		Bar: Of("foo"),
+		Baz: Of(42),
+	}
+
+	j, err := json.Marshal(x)
+
+	if assert.NoError(t, err) {
+		if assert.NotEmpty(t, j) {
+			assert.Equal(t, `{"Bar":"foo","Baz":42}`, string(j))
+		}
+	}
+}
+
 func TestUnmarshalingStruct(t *testing.T) {
 	var x struct {
 		Bar Value[string]
