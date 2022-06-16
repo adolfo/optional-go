@@ -12,7 +12,7 @@ import (
 )
 
 // MarshalJSON implements json.Marshaler interface
-func (o *Value[T]) MarshalJSON() ([]byte, error) {
+func (o Value[T]) MarshalJSON() ([]byte, error) {
 	if o.value == nil {
 		return []byte(`null`), nil
 	}
